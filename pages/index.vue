@@ -4,14 +4,10 @@
     <button @click="fetch">
       Fetch data
     </button>
-
-    <div v-if=" $characters.characters.length">
-      <Character v-for="character in $characters.characters" :character="character">
-      </Character>
-    </div>
-    <div v-else>
+    <div v-if="status">
       {{ status }}
     </div>
+
   </div>
 </template>
 
@@ -19,7 +15,6 @@
 import { ref } from 'vue'
 const userId = ref('700638945')
 const $state = useAppState()
-const $characters = useCharacters()
 const status = ref('idle')
 
 async function fetch() {

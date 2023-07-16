@@ -13,7 +13,7 @@ export const useCharacters = defineStore('characters', {
       this.characters = characters
     }
   },
-  persist: false
+  persist: true
 })
 
 if (import.meta.hot) {

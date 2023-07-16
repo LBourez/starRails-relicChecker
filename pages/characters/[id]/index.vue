@@ -1,5 +1,5 @@
 <template>
-  <div class="border-4 grid grid-rows-3">
+  <div class="border-4 grid grid-rows-3" v-if="character">
     <div id="name">
       {{ character.name }} {{ character.rarity }}*
     </div>
@@ -14,15 +14,25 @@
       </Relic>
     </div>
   </div>
+  <div v-else>
+    not found
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { character } from '../types/starRails'
-const { character } = defineProps({
-  character: {
-    type: Object as () => character,
-    required: true
-  }
+definePageMeta({
+  middleware: 'characters'
+})
+
+import { ref, computed } from 'vue'
+import { character } from '../../types/starRails'
+
+const $characters = useCharacters()
+
+const route = useRoute()
+const { id } = route.params
+
+const character = computed(() => {
+  return $characters.characters[id] as character
 })
 </script>
