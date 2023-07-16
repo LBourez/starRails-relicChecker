@@ -5,8 +5,8 @@
       Fetch data
     </button>
 
-    <div v-if="charactersData">
-      <Character v-for="character in charactersData" :character="character">
+    <div v-if=" $characters.characters.length">
+      <Character v-for="character in $characters.characters" :character="character">
       </Character>
     </div>
     <div v-else>
@@ -17,30 +17,17 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { frontResponse } from '../types/request'
 const userId = ref('700638945')
-const playerData = ref<{} | null>(null)
-const charactersData = ref<{} | null>(null)
+const $state = useAppState()
+const $characters = useCharacters()
 const status = ref('idle')
 
 async function fetch() {
   try {
     console.log('fetching data')
     status.value = 'loading'
-    const { data, pending, error, refresh } = await useFetch<frontResponse>('/api/account', {
-      method: 'post',
-      body: {
-        id: userId.value
-      }
-    })
-
-    const { success, player, characters } = data.value as frontResponse
-    if (!success) {
-      status.value = 'error'
-      return
-    }
-    playerData.value = player
-    charactersData.value = characters
+    const stateStatus = await $state.getState(userId.value)
+    status.value = stateStatus
   } catch (e) {
     console.log(e)
     status.value = 'error'
