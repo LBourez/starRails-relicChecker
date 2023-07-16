@@ -25,7 +25,7 @@ definePageMeta({
 })
 
 import { ref, computed } from 'vue'
-import { character } from '../../types/starRails'
+import { character } from '../../../types/starRails'
 
 const $characters = useCharacters()
 
@@ -33,6 +33,6 @@ const route = useRoute()
 const { id } = route.params
 
 const character = computed(() => {
-  return $characters.characters[id] as character
+  return $characters.characters[Number(id)] as character
 })
 </script>
