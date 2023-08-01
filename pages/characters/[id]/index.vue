@@ -1,16 +1,18 @@
 <template>
-  <div class="border-4 grid grid-rows-3" v-if="character">
-    <div id="name">
-      {{ character.name }} {{ character.rarity }}*
+  <div v-if="character" class="grid grid-rows-1 grid-flow-col gap-4 h-fit">
+    <div class="row-span-3">
+      <div id="name">
+        {{ character.name }} {{ character.rarity }}*
+      </div>
+      <div id="level">
+        Level: {{ character.level }}
+      </div>
+      <div id="ascension">
+        Ascension: {{ character.promotion }}
+      </div>
     </div>
-    <div id="level">
-      Level: {{ character.level }}
-    </div>
-    <div id="ascension">
-      Ascension: {{ character.promotion }}
-    </div>
-    <div id="relics">
-      <Relic v-for="relic in character.relics" :relic="relic" class="row">
+    <div class="grid grid-flow-row grid-cols-2 grid-rows-3 gap-4">
+      <Relic v-for="relic in character.relics" :relic="relic">
       </Relic>
     </div>
   </div>

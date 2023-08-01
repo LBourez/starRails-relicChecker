@@ -8,7 +8,7 @@
     </div>
     <div id="stats">
       <div id="mainStat">
-        <RelicStat :stats="relic.main_affix" :type="'MAIN'">
+        <RelicStat :stats="relic.main_affix" :type="'MAIN'" >
         </RelicStat>
       </div>
       <div id="subStats">
