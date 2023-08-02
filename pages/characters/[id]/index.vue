@@ -1,6 +1,6 @@
 <template>
-  <div v-if="character" class="grid grid-rows-1 grid-flow-col gap-4 h-fit">
-    <div class="row-span-3">
+  <div v-if="character" class="grid grid-rows-1 grid-cols-2 gap-4 w-full h-auto mx-40 my-20">
+    <div>
       <div id="name">
         {{ character.name }} {{ character.rarity }}*
       </div>
@@ -11,7 +11,7 @@
         Ascension: {{ character.promotion }}
       </div>
     </div>
-    <div class="grid grid-flow-row grid-cols-2 grid-rows-3 gap-4">
+    <div class="grid grid-rows-3 grid-cols-2 gap-4">
       <Relic v-for="relic in character.relics" :relic="relic">
       </Relic>
     </div>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex inset-x-0 w-auto h-16 items-center m-4">
+  <div class="flex flex-col h-screen">
+    <div class="flex w-auto h-16 items-center m-4">
       <div class="self-start w-1/12">
         <div class="self-start w-16 h-16">
           <NuxtLink to="/">
@@ -16,7 +16,7 @@
         </NuxtLink>
       </div>
     </div>
-    <div>
+    <div class="flex flex-1">
       <slot />
     </div>
   </div>
