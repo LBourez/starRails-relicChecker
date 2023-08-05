@@ -1,5 +1,5 @@
 <template>
-  <div v-if="character" class="grid grid-rows-1 grid-cols-2 gap-4 w-full h-auto mx-40 my-20">
+  <div v-if="character" class="grid grid-rows-1 grid-cols-2 gap-4 w-full h-auto mx-40 my-20 text-white">
     <div>
       <div id="name">
         {{ character.name }} {{ character.rarity }}*
