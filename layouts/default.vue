@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 const $characters = useCharacters()
 
-let getCharacterBackgroundColor = (characterRarity: number): string => {
+const getCharacterBackgroundColor = (characterRarity: number): string => {
     switch (characterRarity) {
       case 5:
         return "bg-amber-300";
