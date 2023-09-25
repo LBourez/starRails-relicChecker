@@ -1,9 +1,8 @@
 <template>
   <div class="flex w-full h-full justify-center">
-    <div class="flex w-1/6"></div>
-    <div class="flex w-4/6 rounded-3xl bg-gradient-to-br from-slate-600 to-slate-700 my-10 p-10">
+    <div class="flex w-9/12 rounded-3xl bg-gradient-to-br from-slate-600 to-slate-700 my-10 p-10">
       <div v-if="character" class="grid grid-rows-1 grid-cols-2 gap-4 w-full h-full text-white">
-        <div class="bg-contain bg-no-repeat bg-center" :style="{ backgroundImage: 'url(../../assets/images/character/' + character.name + '.webp)'}">
+        <div class="bg-contain bg-no-repeat bg-center" :style="{ backgroundImage: 'url(../../assets/images/character/' + getCharacterSplashArt(character.name) + '.webp)'}">
           <div id="name">
             {{ character.name }} {{ character.rarity }}*
           </div>
@@ -23,7 +22,6 @@
         not found
       </div>
     </div>
-    <div class="flex w-1/6"></div>
   </div>
 </template>
 
@@ -43,4 +41,8 @@ const { id } = route.params
 const character = computed(() => {
   return $characters.characters[Number(id)] as character
 })
+
+const getCharacterSplashArt = (characterName : string) : string => {
+  return "Character_" + characterName.replaceAll(" ", "_") + "_Splash_Art";
+}
 </script>

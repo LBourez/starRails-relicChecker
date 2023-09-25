@@ -8,7 +8,7 @@
           </NuxtLink>
         </div>
       </div>
-      <div v-if="$characters.characters.length" class="flex flex-row flex-nowrap justify-center items-center w-3/5 gap-4 text-center">
+      <div v-if="$characters.characters.length" class="flex flex-row flex-nowrap justify-center items-center w-3/5 h-20 gap-4 text-center bg-gradient-to-r from-transparent via-slate-600 to-transparent">
         <NuxtLink :to="'/characters/' + index" v-for="(character, index) in $characters.characters">
           <div class="flex-none w-16 h-16 rounded-full" :class="getCharacterBackgroundColor(character.rarity)">
             {{ character.name }}

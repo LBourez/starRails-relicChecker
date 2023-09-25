@@ -1,15 +1,15 @@
 <template>
   <div class="grid h-min">
     <div class="flex">
-      <div class="flex-none rounded w-14 h-14 m-1" :class="getBackgroundColor(relic.rarity)">
-        {{ relic.rarity }}*
+      <div class="flex-none rounded-tr-lg mr-1 mb-1" :class="getBackgroundColor(relic.rarity)">
+        <div class="w-16 h-16 bg-contain bg-no-repeat bg-center" :style="{ backgroundImage: 'url(../../assets/images/relic/' + getRelicImage(relic.name) + '.webp)'}"></div>
+        <h1 class="flex justify-center h-fit bg-slate-800 text-sm">
+          + {{ relic.level }}
+        </h1>
       </div>
-      <div class="flex flex-col w-full">  
+      <div class="flex w-full">  
         <h1 id="name">
           {{ relic.name }}
-        </h1>
-        <h1 class="flex justify-end text-2xl">
-          Lvl. {{ relic.level }}
         </h1>
       </div>
     </div>
@@ -23,7 +23,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { relic } from '../types/starRails'
 const { relic } = defineProps({
   relic: {
@@ -48,5 +47,9 @@ const getBackgroundColor = (rarity: number): string => {
       default:
         return "bg-neutral-500";
     }
+}
+
+const getRelicImage = (relicName : string) : string => {
+  return "Item_" + relicName.replaceAll(" ", "_").replaceAll("\'", "\\'");
 }
 </script>
